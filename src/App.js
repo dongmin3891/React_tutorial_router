@@ -6,8 +6,18 @@ import Home from "./Home";
 const App = () => {
   return (
     <div>
-      <Route path="/" component={Home} />
+      {/* <Route path="/" component={Home} />
+      <Route path="/about" component={About} /> 
+       
+        /about 경로로 들어가면, 예상과 다르게 두 컴포넌트가 모두 보여집니다!
+        이는 /about 경로가 / 규칙과도 일치하기 때문에 발생한 현상인데요, 
+        이를 고치기 위해선 Home 을 위한 라우트에 exact 라는 props 를 true 로 설정하시면 됩니다.
+      */}
+
+      <Route path="/" exact={true} component={Home} />
       <Route path="/about" component={About} />
+      {/* 이렇게 하면 경로가 완벽히 똑같을때만 컴포넌트를 
+          보여주게 되어 이슈가 해결됩니다. */}
     </div>
   );
 };
