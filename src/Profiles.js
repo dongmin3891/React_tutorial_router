@@ -2,6 +2,7 @@ import React from "react";
 import { Route, NavLink } from "react-router-dom";
 import Profile from "./Profile";
 import WithRouterSample from "./WithRouterSample";
+import RouterHookSample from "./RouterHookSample";
 
 const Profiles = () => {
   return (
