@@ -1,19 +1,12 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import * as serviceWorker from "./serviceWorker";
-import { createStore } from "redux";
-import { Provider } from "react-redux";
-import rootReducer from "./modules";
+import CounterContainer from "./containers/CounterContainer";
 
-const store = createStore(rootReducer); // 스토어를 만듭니다.
+function App() {
+  return (
+    <div>
+      <CounterContainer />
+    </div>
+  );
+}
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById("root")
-);
-
-serviceWorker.unregister();
+export default App;
