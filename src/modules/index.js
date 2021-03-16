@@ -1,22 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import * as serviceWorker from "./serviceWorker";
-import { createStore } from "redux";
-import { Provider } from "react-redux";
-import rootReducer from "./modules";
+import { combineReducers } from "redux";
+import counter, { counterSaga } from "./counter";
+import posts from "./posts";
+import { all } from "redux-saga/effects";
 
-const store = createStore(rootReducer);
+const rootReducer = combineReducers({ counter, posts });
+export function* rootSaga() {
+  yield all([counterSaga()]); // all 은 배열 안의 여러 사가를 동시에 실행시켜줍니다.
+}
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById("root")
-);
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+export default rootReducer;
